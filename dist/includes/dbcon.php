@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost","root","","inventory");
+$con = mysqli_connect("localhost","root","","aiims");
 
 // Check connection
 if (mysqli_connect_errno())
@@ -9,4 +9,3 @@ if (mysqli_connect_errno())
 
   date_default_timezone_set("Asia/Manila"); 
 ?>
-

@@ -28,10 +28,10 @@
    
     <div class="login-box">
       <div class="login-logo">
-        <b>Management System</b>
+        <b>Agricultural Input and Information Management System</b>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Sign into session</p>
         <form action="login.php" method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username" required>

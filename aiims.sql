@@ -1,23 +1,25 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2021 at 03:30 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Jan 03, 2022 at 08:02 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `inventory`
+-- Database: `aiims`
 --
 
 -- --------------------------------------------------------
@@ -26,14 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `branch`
 --
 
-CREATE TABLE IF NOT EXISTS `branch` (
-  `branch_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `branch` (
+  `branch_id` int(11) NOT NULL,
   `branch_name` varchar(50) NOT NULL,
   `branch_address` varchar(100) NOT NULL,
   `branch_contact` varchar(50) NOT NULL,
-  `skin` varchar(15) NOT NULL,
-  PRIMARY KEY (`branch_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `skin` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `branch`
@@ -52,11 +53,10 @@ INSERT INTO `branch` (`branch_id`, `branch_name`, `branch_address`, `branch_cont
 -- Table structure for table `category`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
-  `cat_id` int(11) NOT NULL AUTO_INCREMENT,
-  `cat_name` varchar(30) NOT NULL,
-  PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+CREATE TABLE `category` (
+  `cat_id` int(11) NOT NULL,
+  `cat_name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
@@ -79,8 +79,8 @@ INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
 -- Table structure for table `customer`
 --
 
-CREATE TABLE IF NOT EXISTS `customer` (
-  `cust_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customer` (
+  `cust_id` int(11) NOT NULL,
   `cust_first` varchar(50) NOT NULL,
   `cust_last` varchar(30) NOT NULL,
   `cust_address` varchar(100) NOT NULL,
@@ -114,9 +114,8 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `valid_id` int(11) NOT NULL,
   `cert` int(11) NOT NULL,
   `cedula` int(11) NOT NULL,
-  `income` int(11) NOT NULL,
-  PRIMARY KEY (`cust_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `income` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
@@ -134,20 +133,19 @@ INSERT INTO `customer` (`cust_id`, `cust_first`, `cust_last`, `cust_address`, `c
 -- Table structure for table `history_log`
 --
 
-CREATE TABLE IF NOT EXISTS `history_log` (
-  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `history_log` (
+  `log_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `action` varchar(100) NOT NULL,
-  `date` datetime NOT NULL,
-  PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `history_log`
 --
 
 INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
-(1, 1, 'added 5 of LG 43" UHD TV UH6100', '2017-02-04 01:10:41'),
+(1, 1, 'added 5 of LG 43\" UHD TV UH6100', '2017-02-04 01:10:41'),
 (2, 1, 'added 100 of Lotion', '2017-02-04 01:10:49'),
 (3, 1, 'added 10 of Rice Cooker', '2017-02-04 01:10:55'),
 (4, 1, 'added 5 of Samsung', '2017-02-04 01:11:07'),
@@ -172,11 +170,11 @@ INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
 (23, 1, 'added 5 of Rice Cooker', '2021-05-11 02:05:17'),
 (24, 1, 'added 6 of Rice Cooker', '2021-05-11 02:05:44'),
 (25, 1, 'added 6 of Rice Cooker', '2021-05-11 02:06:03'),
-(26, 1, 'added 6 of LG 43" UHD TV UH6100', '2021-05-11 02:29:35'),
-(27, 1, 'added 7 of LG 43" UHD TV UH6100', '2021-05-11 02:30:01'),
+(26, 1, 'added 6 of LG 43\" UHD TV UH6100', '2021-05-11 02:29:35'),
+(27, 1, 'added 7 of LG 43\" UHD TV UH6100', '2021-05-11 02:30:01'),
 (28, 1, 'has logged out the system at ', '2021-05-11 03:06:41'),
 (29, 1, 'has logged in the system at ', '2021-05-12 15:40:28'),
-(30, 1, 'added 6 of LG 43" UHD TV UH6100', '2021-05-12 15:46:23'),
+(30, 1, 'added 6 of LG 43\" UHD TV UH6100', '2021-05-12 15:46:23'),
 (31, 1, 'has logged out the system at ', '2021-05-12 16:26:28'),
 (32, 1, 'has logged in the system at ', '2021-05-12 17:03:18'),
 (33, 1, 'has logged out the system at ', '2021-05-12 21:22:19'),
@@ -188,7 +186,7 @@ INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
 (39, 7, 'has logged in the system at ', '2021-05-12 23:51:57'),
 (40, 7, 'has logged out the system at ', '2021-05-12 23:54:01'),
 (41, 1, 'has logged in the system at ', '2021-05-12 23:54:09'),
-(42, 1, 'added 3 of LG 43" UHD TV UH6100', '2021-05-12 23:55:48'),
+(42, 1, 'added 3 of LG 43\" UHD TV UH6100', '2021-05-12 23:55:48'),
 (43, 7, 'has logged in the system at ', '2021-05-13 00:02:57'),
 (44, 6, 'has logged out the system at ', '2021-05-14 01:57:55'),
 (45, 1, 'has logged in the system at ', '2021-05-14 01:58:05'),
@@ -208,8 +206,8 @@ INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
 -- Table structure for table `payment`
 --
 
-CREATE TABLE IF NOT EXISTS `payment` (
-  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `payment` (
+  `payment_id` int(11) NOT NULL,
   `cust_id` int(11) NOT NULL,
   `sales_id` int(11) NOT NULL,
   `payment` decimal(10,2) NOT NULL,
@@ -222,9 +220,8 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `remaining` decimal(10,2) NOT NULL,
   `status` varchar(20) NOT NULL,
   `rebate` decimal(10,2) NOT NULL,
-  `or_no` int(11) NOT NULL,
-  PRIMARY KEY (`payment_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3217 ;
+  `or_no` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `payment`
@@ -294,8 +291,8 @@ INSERT INTO `payment` (`payment_id`, `cust_id`, `sales_id`, `payment`, `payment_
 -- Table structure for table `product`
 --
 
-CREATE TABLE IF NOT EXISTS `product` (
-  `prod_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product` (
+  `prod_id` int(11) NOT NULL,
   `prod_name` varchar(100) NOT NULL,
   `prod_desc` varchar(500) NOT NULL,
   `prod_price` decimal(10,2) NOT NULL,
@@ -305,16 +302,15 @@ CREATE TABLE IF NOT EXISTS `product` (
   `branch_id` int(11) NOT NULL,
   `reorder` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `serial` varchar(50) NOT NULL,
-  PRIMARY KEY (`prod_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+  `serial` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`prod_id`, `prod_name`, `prod_desc`, `prod_price`, `prod_pic`, `cat_id`, `prod_qty`, `branch_id`, `reorder`, `supplier_id`, `serial`) VALUES
-(5, 'LG 43" UHD TV UH6100', '', '45000.00', 'tv.jpg', 5, 6, 1, 0, 4, '19898981'),
+(5, 'LG 43\" UHD TV UH6100', '', '45000.00', 'tv.jpg', 5, 6, 1, 0, 4, '19898981'),
 (13, 'Rice Cooker', '', '550.00', 'WIN_20160728_16_56_20_Pro (2).jpg', 9, 45, 1, 2, 4, '22ewew'),
 (14, 'Samsung', '', '15000.00', 'WIN_20160209_16_45_20_Pro.jpg', 10, 3, 1, 4, 5, 'erere323'),
 (15, 'Lotion', '', '120.00', 'default.gif', 12, 96, 1, 4, 6, '1101388911'),
@@ -328,17 +324,16 @@ INSERT INTO `product` (`prod_id`, `prod_name`, `prod_desc`, `prod_price`, `prod_
 -- Table structure for table `producttracker`
 --
 
-CREATE TABLE IF NOT EXISTS `producttracker` (
-  `TransRef` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `producttracker` (
+  `TransRef` int(11) NOT NULL,
   `Action` varchar(100) DEFAULT NULL,
   `Saleqty` int(11) DEFAULT NULL,
   `PurchaseQty` int(11) DEFAULT NULL,
   `Balance` int(11) DEFAULT NULL,
   `prod_id` int(11) NOT NULL,
-  `TrackerDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `branch_id` int(11) NOT NULL,
-  PRIMARY KEY (`TransRef`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `TrackerDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `branch_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `producttracker`
@@ -362,15 +357,14 @@ INSERT INTO `producttracker` (`TransRef`, `Action`, `Saleqty`, `PurchaseQty`, `B
 -- Table structure for table `purchase_request`
 --
 
-CREATE TABLE IF NOT EXISTS `purchase_request` (
-  `pr_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `purchase_request` (
+  `pr_id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `request_date` date NOT NULL,
   `branch_id` int(11) NOT NULL,
-  `purchase_status` varchar(10) NOT NULL,
-  PRIMARY KEY (`pr_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `purchase_status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `purchase_request`
@@ -388,8 +382,8 @@ INSERT INTO `purchase_request` (`pr_id`, `prod_id`, `qty`, `request_date`, `bran
 -- Table structure for table `sales`
 --
 
-CREATE TABLE IF NOT EXISTS `sales` (
-  `sales_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sales` (
+  `sales_id` int(11) NOT NULL,
   `cust_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `cash_tendered` decimal(10,2) DEFAULT NULL,
@@ -399,9 +393,8 @@ CREATE TABLE IF NOT EXISTS `sales` (
   `date_added` datetime NOT NULL,
   `modeofpayment` varchar(15) NOT NULL,
   `branch_id` int(11) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`sales_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+  `total` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sales`
@@ -458,14 +451,13 @@ INSERT INTO `sales` (`sales_id`, `cust_id`, `user_id`, `cash_tendered`, `discoun
 -- Table structure for table `sales_details`
 --
 
-CREATE TABLE IF NOT EXISTS `sales_details` (
-  `sales_details_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sales_details` (
+  `sales_details_id` int(11) NOT NULL,
   `sales_id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `qty` int(11) NOT NULL,
-  PRIMARY KEY (`sales_details_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sales_details`
@@ -519,15 +511,14 @@ INSERT INTO `sales_details` (`sales_details_id`, `sales_id`, `prod_id`, `price`,
 -- Table structure for table `stockin`
 --
 
-CREATE TABLE IF NOT EXISTS `stockin` (
-  `stockin_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stockin` (
+  `stockin_id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `qty` int(6) NOT NULL,
   `date` datetime NOT NULL,
   `branch_id` int(11) NOT NULL,
-  `Balance_before` int(11) DEFAULT NULL,
-  PRIMARY KEY (`stockin_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+  `Balance_before` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stockin`
@@ -560,13 +551,12 @@ INSERT INTO `stockin` (`stockin_id`, `prod_id`, `qty`, `date`, `branch_id`, `Bal
 -- Table structure for table `supplier`
 --
 
-CREATE TABLE IF NOT EXISTS `supplier` (
-  `supplier_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `supplier` (
+  `supplier_id` int(11) NOT NULL,
   `supplier_name` varchar(100) NOT NULL,
   `supplier_address` varchar(300) NOT NULL,
-  `supplier_contact` varchar(50) NOT NULL,
-  PRIMARY KEY (`supplier_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `supplier_contact` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `supplier`
@@ -586,14 +576,13 @@ INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `supplier_address`, `sup
 -- Table structure for table `temp_trans`
 --
 
-CREATE TABLE IF NOT EXISTS `temp_trans` (
-  `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `temp_trans` (
+  `temp_trans_id` int(11) NOT NULL,
   `prod_id` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `qty` int(11) NOT NULL,
-  `branch_id` int(11) NOT NULL,
-  PRIMARY KEY (`temp_trans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `branch_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `temp_trans`
@@ -609,8 +598,8 @@ INSERT INTO `temp_trans` (`temp_trans_id`, `prod_id`, `price`, `qty`, `branch_id
 -- Table structure for table `term`
 --
 
-CREATE TABLE IF NOT EXISTS `term` (
-  `term_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `term` (
+  `term_id` int(11) NOT NULL,
   `sales_id` int(11) DEFAULT NULL,
   `payable_for` varchar(10) NOT NULL,
   `term` varchar(11) NOT NULL,
@@ -619,9 +608,8 @@ CREATE TABLE IF NOT EXISTS `term` (
   `down` decimal(10,2) NOT NULL,
   `due_date` date NOT NULL,
   `interest` decimal(10,2) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  PRIMARY KEY (`term_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `term`
@@ -640,15 +628,14 @@ INSERT INTO `term` (`term_id`, `sales_id`, `payable_for`, `term`, `due`, `paymen
 -- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
   `username` varchar(15) NOT NULL,
   `password` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `status` varchar(10) NOT NULL,
-  `branch_id` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `branch_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -660,6 +647,195 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `name`, `status`, `branch
 (5, 'Mikee', 'a1Bz20ydqelm8m1wql21232f297a57a5a743894a0e4a801fc3', 'Mikee', 'active', 1),
 (6, 'administrator', 'a1Bz20ydqelm8m1wql21232f297a57a5a743894a0e4a801fc3', 'Giu Matthew', 'active', 0),
 (7, 'NICHOLAS', 'a1Bz20ydqelm8m1wqlcfbb12c3457ebc308c81874b5fd55a17', 'Nicholas', 'active', 5);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `branch`
+--
+ALTER TABLE `branch`
+  ADD PRIMARY KEY (`branch_id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`cat_id`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`cust_id`);
+
+--
+-- Indexes for table `history_log`
+--
+ALTER TABLE `history_log`
+  ADD PRIMARY KEY (`log_id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`payment_id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`prod_id`);
+
+--
+-- Indexes for table `producttracker`
+--
+ALTER TABLE `producttracker`
+  ADD PRIMARY KEY (`TransRef`);
+
+--
+-- Indexes for table `purchase_request`
+--
+ALTER TABLE `purchase_request`
+  ADD PRIMARY KEY (`pr_id`);
+
+--
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`sales_id`);
+
+--
+-- Indexes for table `sales_details`
+--
+ALTER TABLE `sales_details`
+  ADD PRIMARY KEY (`sales_details_id`);
+
+--
+-- Indexes for table `stockin`
+--
+ALTER TABLE `stockin`
+  ADD PRIMARY KEY (`stockin_id`);
+
+--
+-- Indexes for table `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`supplier_id`);
+
+--
+-- Indexes for table `temp_trans`
+--
+ALTER TABLE `temp_trans`
+  ADD PRIMARY KEY (`temp_trans_id`);
+
+--
+-- Indexes for table `term`
+--
+ALTER TABLE `term`
+  ADD PRIMARY KEY (`term_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `branch`
+--
+ALTER TABLE `branch`
+  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `history_log`
+--
+ALTER TABLE `history_log`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3217;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `producttracker`
+--
+ALTER TABLE `producttracker`
+  MODIFY `TransRef` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `purchase_request`
+--
+ALTER TABLE `purchase_request`
+  MODIFY `pr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT for table `sales_details`
+--
+ALTER TABLE `sales_details`
+  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `stockin`
+--
+ALTER TABLE `stockin`
+  MODIFY `stockin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `temp_trans`
+--
+ALTER TABLE `temp_trans`
+  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `term`
+--
+ALTER TABLE `term`
+  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
