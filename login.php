@@ -278,7 +278,6 @@ if(isset($_POST['login']))
 
 $user_unsafe=$_POST['username'];
 $pass_unsafe=$_POST['password'];
-$branch=$_POST['branch'];
 
 $user = mysqli_real_escape_string($con,$user_unsafe);
 $pass1 = mysqli_real_escape_string($con,$pass_unsafe);
@@ -291,7 +290,7 @@ date_default_timezone_set('Asia/Manila');
 
 $date = date("Y-m-d H:i:s");
 
-$query=mysqli_query($con,"select * from user natural join branch where username='$user'  and branch_id='$branch' and status='active'")or die(mysqli_error($con));
+$query=mysqli_query($con,"select * from user natural join branch where username='$user' and status='active'")or die(mysqli_error($con));
 	$row=mysqli_fetch_array($query);
            $id=$row['user_id'];
            $name=$row['name'];
@@ -299,7 +298,7 @@ $query=mysqli_query($con,"select * from user natural join branch where username=
 
            $id=$row['user_id'];
            $_SESSION['branch']=$row['branch_id'];
-           $_SESSION['skin']=$row['skin'];
+           $_SESSION['skin']='green';
 
   	if ($counter == 0) 
 	  {	
@@ -316,7 +315,7 @@ $query=mysqli_query($con,"select * from user natural join branch where username=
 		mysqli_query($con,"INSERT INTO history_log(user_id,action,date) VALUES('$id','$remarks','$date')")or die(mysqli_error($con));
 
 	
-    $query1=mysqli_query($con,"select * from payment natural join customer where branch_id='$branch' and status<>'paid'")or die(mysqli_error($con));
+    $query1=mysqli_query($con,"select * from payment natural join customer where status<>'paid'")or die(mysqli_error($con));
     while($row1=mysqli_fetch_array($query1)){
 
       $pid=$row1['payment_id'];	

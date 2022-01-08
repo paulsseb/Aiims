@@ -44,7 +44,7 @@ endif;
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav">
+  <body class="hold-transition skin-<?php echo 'green';?> layout-top-nav">
     <div class="wrapper">
       <?php include('../dist/includes/header.php');
       include('../dist/includes/dbcon.php');
