@@ -1,3 +1,3 @@
 <?php 
-	echo "Sales & Inventory w/ Credit Mgt System";
+	echo "Agricultural Inputs Information Management System";
 ?>

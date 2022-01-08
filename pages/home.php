@@ -31,7 +31,8 @@ endif;
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav" onload="myFunction()">
+  <!-- skin can be  black,blue,purple,red,green -->
+  <body class="hold-transition skin-<?php echo 'green';?> layout-top-nav" onload="myFunction()">
     <div class="wrapper">
       <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
@@ -46,7 +47,7 @@ endif;
 	      <div class="col-md-8">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Transactions</h3>
+                  <h3 class="box-title">Dashboard</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="row">
@@ -151,15 +152,15 @@ endif;
       
 ?>
                 <div class="box-body">
-                  <strong><i class="glyphicon glyphicon-map-marker margin-r-5"></i> Company Address</strong>
+                  <strong><i class="glyphicon glyphicon-map-marker margin-r-5"></i> System Name</strong>
                   <p class="text-muted">
-                    <?php echo $row['branch_address'];?>
+                    <?php echo 'Agricultural Inputs Information Management System'?>
                   </p>
 
                   <hr>
 
-                  <strong><i class="glyphicon glyphicon-phone-alt margin-r-5"></i> Contact Number/s</strong>
-                  <p class="text-muted"><?php echo $row['branch_contact'];?></p>
+                  <strong><i class="glyphicon glyphicon-phone-alt margin-r-5"></i> Details</strong>
+                  <p class="text-muted"><?php echo 'Used by the farmers and dealers in agro inputs. '?></p>
 
                   <hr>
 
